@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pg'
+gem 'devise'
 
 group :development do
   gem 'web-console', '~> 2.0'
