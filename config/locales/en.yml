@@ -21,3 +21,19 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      short: "%H:%M"
+  date:
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thurday
+    - Friday
+    - Saturday
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %B"

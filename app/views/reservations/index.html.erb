@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <h2>Booking App - Reservations</h2>
+  
+  <div class="table-responsive">
+    <table data-toggle="table"  data-row-style="rowStyle" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Horário</th>
+          <% I18n.t(:"date.day_names").each do |day_name| %>
+            <th data-item-id=""> <%= day_name %> </th>
+          <% end %>
+        </tr>
+        </thead>
+      <tbody>
+        <% get_reservation_slots.each do |slots| %>
+          <tr>
+            <td> <%= slots.first %></td>
+            <% slots.last.each do |date| %>
+              <td>
+                <%= l date, format: :short %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
