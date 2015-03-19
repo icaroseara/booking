@@ -5,3 +5,5 @@ Booking is an example application that provides meeting room booking.
 {<img src="https://codeclimate.com/github/icaroseara/booking/badges/gpa.svg"/>}[https://codeclimate.com/github/icaroseara/booking]
 
 {<img src="https://codeclimate.com/github/icaroseara/booking/badges/coverage.svg" />}[https://codeclimate.com/github/icaroseara/booking]
+
+{<img alt="Status?branch=master" src="https://codeship.com/projects/72ca70e0-b080-0132-7a7b-5e604f7ebe37/status?branch=master" />}[https://codeship.com/projects/69573]
