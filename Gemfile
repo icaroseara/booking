@@ -10,6 +10,8 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pg'
 gem 'devise'
 gem 'email_validator'
+gem 'rails-i18n', '~> 4.0.0'
+gem 'devise-i18n'
 
 group :development do
   gem 'web-console', '~> 2.0'

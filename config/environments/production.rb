@@ -96,4 +96,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  config.i18n.available_locales = ["pt-BR", :en]
+  config.i18n.default_locale = "pt-BR"
 end
