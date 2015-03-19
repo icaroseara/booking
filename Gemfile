@@ -9,6 +9,7 @@ gem 'turbolinks'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'pg'
 gem 'devise'
+gem 'email_validator'
 
 group :development do
   gem 'web-console', '~> 2.0'
@@ -30,6 +31,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
