@@ -3,11 +3,11 @@ module Services::Reservations
     attr_accessor :booked_at
     attr_accessor :user_id
     
-    validate :booked_at, presence: true
-    validate :user_id, presence: true
+    validates_presence_of :booked_at
+    validates_presence_of :user_id
     
     def call
-      Reservation.create(booked_at: booked_at, status: :booked, user_id: user_id)
+      Reservation.create(booked_at: booked_at, status: :booked, user_id: user_id) if is_valid?
     end
     
     def is_valid?

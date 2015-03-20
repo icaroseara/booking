@@ -4,11 +4,11 @@ module Services::Reservations
     attr_accessor :user_id
     attr_accessor :reservation
     
-    validate :id, presence: true
-    validate :user_id, presence: true
+    validates_presence_of :id
+    validates_presence_of :user_id
     
     def call
-      reservation.update_attributes(status: :canceled)
+      reservation.update_attributes(status: :canceled) if reservation.present?
       reservation
     end
     
