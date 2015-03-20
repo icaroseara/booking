@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
       if @service.is_valid?
         format.json { render json: @service.call.as_json(include: :user) } 
       else
-        format.json { render json: @service.errors } 
+        format.json { render json: @service.errors, status: 422  } 
       end
     end
   end
@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
       if @service.is_valid?
         format.json { render json: @service.call.as_json(include: :user) } 
       else
-        format.json { render json: @service.errors } 
+        format.json { render json: @service.errors, status: 422  } 
       end
     end
   end

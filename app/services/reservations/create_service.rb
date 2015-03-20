@@ -17,7 +17,7 @@ module Services::Reservations
     private
     
     def slot_available?
-      slot_available = Reservation.in_current_week.booked.booked_at(booked_at).blank?
+      slot_available = Reservation.in_current_week.booked.booked_at(booked_at.to_time).blank?
       errors.add(:booked_at, :invalid) unless slot_available
       slot_available
     end
