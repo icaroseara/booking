@@ -4,7 +4,7 @@ $(document).ready(function(){
     var selected_element = event.target
     event.preventDefault(); 
     $.ajax({
-      url: $(this).attr('hrf'),
+      url: selected_element.href,
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded; charset=UTF-8'
       },
@@ -19,5 +19,21 @@ $(document).ready(function(){
       }
     });
   }); 
+  $('.cancel_booking').click(function (event) 
+  { 
+    var selected_element = event.target
+    event.preventDefault(); 
+    $.ajax({
+      url: selected_element.href,
+      type: 'PUT',
+      success: function(data) {
+        console.log("success");
+        $(selected_element).replaceWith("<span>Disponível</span>");
+      },
+      error: function() {
+        console.log("fail");
+      }
+    });
+  });
 });
 

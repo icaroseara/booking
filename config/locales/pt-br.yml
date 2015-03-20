@@ -1,6 +1,8 @@
 pt-BR:
   reservation:
     available: "Disponível"
+    unavailable: "Reservado para %{name}"
+    cancel: "Cancelar reserva"
   time:
     formats:
       short: "%H:%M"

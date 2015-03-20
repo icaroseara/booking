@@ -17,7 +17,15 @@ class ReservationsController < ApplicationController
     end
   end
   
-  def cancel_booking
+  def update
+    respond_to do |format|
+      @service = Services::Reservations::UpdateService.new({id: params[:id], user_id: current_user.id})
+      if @service.is_valid?
+        format.json { render json: @service.call.as_json(include: :user) } 
+      else
+        format.json { render json: @service.errors } 
+      end
+    end
   end
   
   private

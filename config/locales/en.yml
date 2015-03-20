@@ -23,6 +23,8 @@ en:
   hello: "Hello world"
   reservation:
     available: "Available"
+    unavailable: "Booked by %{name}"
+    cancel: "Cancel reservation"
   time:
     formats:
       short: "%H:%M"

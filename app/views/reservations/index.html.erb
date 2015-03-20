@@ -19,9 +19,13 @@
             <% slots.last.each do |date| %>
               <td>
                 <% if @slots_booked[date.to_s].present? %>
-                  <%= "Reservado para #{@slots_booked[date.to_s].user.name}" %>
+                  <% if @slots_booked[date.to_s].user == current_user %>
+                    <%= link_to t("reservation.cancel"), reservation_path(@slots_booked[date.to_s].id), class: "cancel_booking" %>
+                  <% else %>
+                    <%= t("reservation.unavailable", name: @slots_booked[date.to_s].user.name) %>
+                  <% end %>
                 <% else %>
-                  <%= link_to I18n.t(:"reservation.available"), "/", id: "create_booking_#{date.to_s}", class: "create_booking", booked_at: date %>
+                  <%= link_to t("reservation.available"), reservations_path, class: "create_booking", booked_at: date %>
                 <% end %>
               </td>
             <% end %>
