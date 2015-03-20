@@ -1,5 +1,5 @@
-$(document).ready(function(){
-  $('.create_booking').click(function (event) 
+$(function() {
+  $(document).on( "click", ".create_booking", function(event)
   { 
     var selected_element = event.target
     event.preventDefault(); 
@@ -13,13 +13,17 @@ $(document).ready(function(){
         'reservation': { "booked_at": $(this).attr('booked_at') }
       },
       success: function(data) {
-        $(selected_element).replaceWith("<span>Reservado para "+data.user.name+"</span>");
+        $(selected_element).attr({
+          class: "cancel_booking",
+          href: "/reservations/"+ data.id
+        }).text("Cancelar reserva");
       },
       error: function() {
       }
     });
   }); 
-  $('.cancel_booking').click(function (event) 
+  
+  $(document).on( "click", ".cancel_booking", function(event)  
   { 
     var selected_element = event.target
     event.preventDefault(); 
@@ -27,11 +31,13 @@ $(document).ready(function(){
       url: selected_element.href,
       type: 'PUT',
       success: function(data) {
-        console.log("success");
-        $(selected_element).replaceWith("<span>Disponível</span>");
+        $(selected_element).attr({
+          class: "create_booking",
+          href: "/reservations/",
+          booked_at: data.booked_at
+        }).text("Disponível");
       },
       error: function() {
-        console.log("fail");
       }
     });
   });

@@ -8,7 +8,7 @@ class Reservation < ActiveRecord::Base
   validate :booked_at_must_be_in_current_week, :booked_at_must_be_in_valid_time, on: :create
   
   scope :booked, -> { where(status: 0)}
-  scope :in_current_week, -> { where(booked_at: Date.current.all_week)}
+  scope :in_current_week, -> { where(booked_at: Time.zone.now.beginning_of_week..Time.zone.now.at_end_of_week)}
   scope :booked_at, -> booked_at { where(booked_at: booked_at) }
   
   START_TIME = 6
