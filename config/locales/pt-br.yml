@@ -1,4 +1,6 @@
 pt-BR:
+  reservation:
+    available: "Disponível"
   time:
     formats:
       short: "%H:%M"

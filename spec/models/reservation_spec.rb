@@ -12,21 +12,22 @@ RSpec.describe Reservation, type: :model do
   # Custom validations
   describe "booked_at must to be in current week" do
     context "when valid" do
-      it { expect { FactoryGirl.create(:reservation, booked_at: Time.now) }.not_to raise_error }
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.current.midday) }.not_to raise_error }
     end
     context "when invalid" do
-      it { expect { FactoryGirl.create(:reservation, booked_at: Time.now + 1.week) }.to raise_error ActiveRecord::RecordInvalid }
-      it { expect { FactoryGirl.create(:reservation, booked_at: Time.now - 1.week) }.to raise_error ActiveRecord::RecordInvalid }
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.current.midday + 1.week) }.to raise_error ActiveRecord::RecordInvalid }
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.current.midday - 1.week) }.to raise_error ActiveRecord::RecordInvalid }
     end
   end
   
   describe "booked_at must to be between 6:00 a.m. and 11:00 p.m." do
     context "when valid" do
-      it { expect { FactoryGirl.create(:reservation, booked_at: Time.now.midday) }.not_to raise_error }
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.current.midday) }.not_to raise_error }
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.yesterday.midday) }.not_to raise_error }
     end
     context "when invalid" do
-      it { expect { FactoryGirl.create(:reservation, booked_at: Time.now.at_beginning_of_day).to raise_error ActiveRecord::RecordInvalid }}
-      it { expect { FactoryGirl.create(:reservation, booked_at: Time.now.at_end_of_day).to raise_error ActiveRecord::RecordInvalid }}
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.current.at_beginning_of_day).to raise_error ActiveRecord::RecordInvalid }}
+      it { expect { FactoryGirl.create(:reservation, booked_at: Date.current.at_end_of_day).to raise_error ActiveRecord::RecordInvalid }}
     end
   end
 end

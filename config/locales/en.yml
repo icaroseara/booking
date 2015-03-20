@@ -21,6 +21,8 @@
 
 en:
   hello: "Hello world"
+  reservation:
+    available: "Available"
   time:
     formats:
       short: "%H:%M"

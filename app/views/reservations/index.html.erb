@@ -7,17 +7,22 @@
         <tr>
           <th>Horário</th>
           <% I18n.t(:"date.day_names").each do |day_name| %>
-            <th data-item-id=""> <%= day_name %> </th>
+            <th> <%= day_name %> </th>
           <% end %>
         </tr>
         </thead>
       <tbody>
-        <% get_reservation_slots.each do |slots| %>
+        <div id="reservation-form" style="display:none;"></div>
+        <% @all_slots.each do |slots| %>
           <tr>
             <td> <%= slots.first %></td>
             <% slots.last.each do |date| %>
               <td>
-                <%= l date, format: :short %>
+                <% if @slots_booked[date.to_s].present? %>
+                  <%= "Reservado para #{@slots_booked[date.to_s].user.name}" %>
+                <% else %>
+                  <%= link_to I18n.t(:"reservation.available"), "/", id: "create_booking_#{date.to_s}", class: "create_booking", booked_at: date %>
+                <% end %>
               </td>
             <% end %>
           </tr>

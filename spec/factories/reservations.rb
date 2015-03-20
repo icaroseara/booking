@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :reservation do
-    booked_at Time.now
+    booked_at Date.current.midday
     user { create(:user) }
     status :booked
   end
