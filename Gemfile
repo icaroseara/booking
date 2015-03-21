@@ -36,6 +36,6 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'database_cleaner'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
